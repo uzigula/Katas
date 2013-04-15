@@ -15,11 +15,38 @@ namespace Tennis
 
         public string Score()
         {
-            if (_jugador1.Score == _jugador2.Score && _jugador1.Score >= 40)
+            if (EsEmpate())
                 return "Deuce";
-            else
-                return string.Format(_jugador1.Nombre + ": {0} " + _jugador2.Nombre + ": {1}", _jugador1.Score,
-                                     _jugador2.Score);
+
+            if (TerminoElJuego())
+                return "Gana " + JugadorGanador().Nombre;
+
+            if (EnVentaja())
+                return "Ventaja " + JugadorGanador().Nombre;
+
+            return string.Format(_jugador1.Nombre + ": {0} " + _jugador2.Nombre + ": {1}", PuntajeParaPizarra(_jugador1.Score),
+                                 PuntajeParaPizarra(_jugador2.Score));
+        }
+
+        private bool EnVentaja()
+        {
+            return ((_jugador1.Score >= 4 || _jugador2.Score >= 4) && (Math.Abs(_jugador1.Score - _jugador2.Score) == 1));
+        }
+
+        private bool TerminoElJuego()
+        {
+            return ((_jugador1.Score >= 4 || _jugador2.Score >= 4) && (Math.Abs(_jugador1.Score - _jugador2.Score) == 2));
+
+        }
+
+        private Jugador JugadorGanador()
+        {
+            return (_jugador1.Score > _jugador2.Score) ? _jugador1 : _jugador2;
+        }
+
+        private bool EsEmpate()
+        {
+            return (_jugador1.Score == _jugador2.Score && _jugador1.Score >= 3);
         }
 
         public void PuntoPara(string nombreJugador)
@@ -38,6 +65,12 @@ namespace Tennis
                 return null;
         }
 
+        private int PuntajeParaPizarra(int score)
+        {
+            var puntaje = score * 15;
+            return puntaje > 40 ? 40 : puntaje;
+        }
+
     }
 
     internal class Jugador
@@ -53,12 +86,10 @@ namespace Tennis
             }
         }
 
+
         public void Anotacion()
         {
-            _score += 15;
-            if (_score > 40)
-                _score = 40;
-
+            _score += 1;
         }
 
 
