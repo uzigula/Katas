@@ -7,7 +7,7 @@
     <ProjectGuid>{311E935A-7483-4392-B06F-02FE473237CA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tennis.Test</RootNamespace>
+    <RootNamespace>TennisScore.Test</RootNamespace>
     <AssemblyName>Tennis.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
