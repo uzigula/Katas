@@ -72,5 +72,19 @@ namespace TennisScore.Test
             Assert.AreEqual("Federer: 40 Nadal: 30", score);
         }
 
+        [Test]
+        public void DadoJuegoIniciado_Jugador1GanaCuatroPuntosYJugador2GanaCuatroPuntos_EntoncesScore_Deuce()
+        {
+            tennis.PuntoPara("Nadal");
+            tennis.PuntoPara("Federer");
+            tennis.PuntoPara("Federer");
+            tennis.PuntoPara("Nadal");
+            tennis.PuntoPara("Federer");
+            tennis.PuntoPara("Nadal");
+            tennis.PuntoPara("Federer");
+            tennis.PuntoPara("Nadal");
+            var score = tennis.Score();
+            Assert.AreEqual("Deuce", score);
+        }
     }
 }

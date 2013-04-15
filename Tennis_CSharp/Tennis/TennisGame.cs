@@ -15,7 +15,11 @@ namespace Tennis
 
         public string Score()
         {
-            return string.Format(_jugador1.Nombre + ": {0} " + _jugador2.Nombre + ": {1}", _jugador1.Score, _jugador2.Score);
+            if (_jugador1.Score == _jugador2.Score && _jugador1.Score >= 40)
+                return "Deuce";
+            else
+                return string.Format(_jugador1.Nombre + ": {0} " + _jugador2.Nombre + ": {1}", _jugador1.Score,
+                                     _jugador2.Score);
         }
 
         public void PuntoPara(string nombreJugador)
